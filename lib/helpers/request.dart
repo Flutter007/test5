@@ -12,9 +12,17 @@ Future<dynamic> requestGet(String url) async {
 
 Future<dynamic> requestPost(String uri, String message) async {
   if (message.isNotEmpty) {
-    final response = await http.post(
-      Uri.parse(uri),
-      body: {'message': message},
-    );
+    await http.post(Uri.parse(uri), body: {'message': message});
   }
+}
+
+Future<dynamic> requestPostInfo(
+  String uri,
+  String name,
+  String familyName,
+) async {
+  await http.post(
+    Uri.parse(uri),
+    body: {'firstName': name, 'lastName': familyName},
+  );
 }

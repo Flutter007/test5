@@ -81,7 +81,6 @@ class _Test5State extends State<Test5> {
             },
             child: Text('Login'),
           ),
-          Text(error ?? ''),
         ],
       ),
     );
