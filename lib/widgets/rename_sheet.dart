@@ -23,15 +23,23 @@ class _RenameSheetState extends State<RenameSheet> {
   }
 
   void rename() async {
+    String uri =
+        'http://146.185.154.90:8000/blog/${widget.user[0].email}/profile';
     try {
       await requestPostInfo(
-        'http://146.185.154.90:8000/blog/${widget.user[0].email}/profile',
+        uri,
         nameController.text,
         familyNameController.text,
       );
-      setState(() {});
+      final response = await requestGet(uri);
+      setState(() {
+        widget.user[0] = User.fromJson(response);
+        nameController.clear();
+        familyNameController.clear();
+      });
+      Navigator.pop(context);
     } catch (e) {
-      print(e);
+      Center(child: Text('Something went wrong!'));
     }
   }
 
@@ -58,7 +66,12 @@ class _RenameSheetState extends State<RenameSheet> {
               border: OutlineInputBorder(),
             ),
           ),
-          TextButton(onPressed: rename, child: Text('Rename')),
+          TextButton(
+            onPressed: () {
+              rename();
+            },
+            child: Text('Rename'),
+          ),
         ],
       ),
     );

@@ -19,7 +19,7 @@ class Post {
       message: json['message'],
       userId: json['userId'],
       id: json['_id'],
-      dateTime: DateTime.parse(json['dateTime']).toLocal(),
+      dateTime: DateTime.parse(json['datetime']).toLocal(),
       user: User.fromJson(json['user']),
     );
   }

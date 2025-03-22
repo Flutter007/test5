@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import 'package:http/http.dart' as http;
 
 Future<dynamic> requestGet(String url) async {
@@ -10,9 +11,11 @@ Future<dynamic> requestGet(String url) async {
   }
 }
 
-Future<dynamic> requestPost(String uri, String message) async {
+Future<dynamic> requestPost(String uri, String message, String type) async {
   if (message.isNotEmpty) {
-    await http.post(Uri.parse(uri), body: {'message': message});
+    await http.post(Uri.parse(uri), body: {type: message});
+  } else {
+    return;
   }
 }
 

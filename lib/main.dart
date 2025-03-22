@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:test5/screens/ribbon_screen.dart';
 import 'package:test5/test5.dart';
+import 'package:test5/theme/light_theme.dart';
 
 void main() {
-  runApp(MaterialApp(home: Test5()));
+  runApp(MaterialApp(theme: lightTheme, home: Test5()));
 }
